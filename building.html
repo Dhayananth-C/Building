@@ -1,0 +1,123 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 11-13-2024
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+
+ <template>
+    <lightning-card title="Multistore building management">
+        <div class="slds-p-around_medium">
+            <div class="slds-grid" style="margin-left: 50px;">
+                <div class="slds-col">
+                    <lightning-button 
+                      variant="brand"
+                      label="Add Building" 
+                      onclick={HandleAddBuilding} 
+                    ></lightning-button>
+                  </div>
+
+                  <div class="slds-col">
+                      <lightning-button 
+                        variant="brand"
+                        label="Add Flats" 
+                        onclick={handleAddFlats} 
+                      ></lightning-button>
+                  </div>
+
+          <template lwc:if={displayBuild}> 
+          
+            <section  class="slds-modal slds-fade-in-open">
+              <div class="slds-modal__container">
+                    <div class="slds-modal__header">
+                      <h1  class="slds-modal__title slds-hyphenate">Creating Building</h1>
+              </div>
+              <div class="slds-modal__content slds-p-around_medium " >
+                 
+              
+  
+                <lightning-record-edit-form
+                object-api-name={object}
+                >
+                <lightning-input-field field-name={Field.Name} name="Name" onchange={handleChangeBuild}> </lightning-input-field>
+                <lightning-input-field field-name={Field.Address} name="address" onchange={handleChangeBuild}> </lightning-input-field>
+                <lightning-input-field field-name={Field.Nooffloor} name="nooffloor" onchange={handleChangeBuild}></lightning-input-field>
+              </lightning-record-edit-form> 
+            
+              </div>
+              <div class="slds-modal__footer">
+              <button class="slds-button slds-button_neutral" aria-label="Cancel and close"  onclick={handleCancelBuilding}  >Cancel</button>
+              <button class="slds-button slds-button_brand" onclick={handleSaveBuilding} >Save</button>
+              </div>
+              </div>
+              </section>
+              <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+
+
+           
+           
+          </template>
+          <template lwc:elseif={displayFlats}>
+
+   
+            <section  class="slds-modal slds-fade-in-open">
+              <div class="slds-modal__container">
+                    <div class="slds-modal__header">
+                      <h1  class="slds-modal__title slds-hyphenate">Creating Flat</h1>
+              </div>
+              <div class="slds-modal__content slds-p-around_medium " >
+                 
+                <lightning-record-edit-form
+                object-api-name={objectFlat}
+                >
+    <div class="slds-grid slds-wrap">
+         <div class="slds-col slds-size_6-of-12">
+                <lightning-input-field field-name={FlatField.fnum} name="fname" onchange={handleChangeFlat}> </lightning-input-field>
+                <lightning-input-field field-name={FlatField.building} name="building" onchange={handleChangeFlat}> </lightning-input-field>
+                <lightning-input-field field-name={FlatField.fstatus} name="fstatus" onchange={handleChangeFlat}></lightning-input-field>
+        </div>
+        <div class="slds-col slds-size_6-of-12">
+                <lightning-input-field field-name={FlatField.floor} name="floor" onchange={handleChangeFlat}></lightning-input-field>
+                <lightning-input-field field-name={FlatField.rent} name="rent" onchange={handleChangeFlat}></lightning-input-field>
+        </div>
+      </div>
+              
+
+              </lightning-record-edit-form> 
+            
+              </div>
+              <div class="slds-modal__footer">
+              <button class="slds-button slds-button_neutral" aria-label="Cancel and close"  onclick={handleCancelFlats}  >Cancel</button>
+              <button class="slds-button slds-button_brand" onclick={handleSaveFlats} >Save</button>
+              </div>
+              </div>
+              </section>
+              <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     
+
+          </template>
+
+
+               
+            </div>
+            
+
+        </div>
+    </lightning-card>
+</template> 
